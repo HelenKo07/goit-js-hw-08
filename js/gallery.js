@@ -84,14 +84,25 @@ const images = [
         imagesListEl.innerHTML = imagesCardTemplate;
 
         imagesListEl.addEventListener('click', event => {
+          event.preventDefault();
           if (event.target === event.currentTarget) {
            return; 
           }
-          console.log(event.target);
-          console.log(event.currentTarget);
+          
+          const modalWindowInstance = basicLightbox.create(`<li class="gallery-item">
+        <a class="gallery-link" href="${image.original}">
+          <img
+            class="gallery-image"
+            src="${image.preview}"
+            data-source="${image.original}"
+            alt="${image.description}"
+          />
+        </a>
+      </li>`);
+
+          modalWindowInstance.show();
 
         });
         
-  
 
     
